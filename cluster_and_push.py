@@ -5,6 +5,7 @@ from data_preprocessing import filter_dataframe
 from hushhushDB_V1 import import_data
 from datetime import datetime
 import random
+import streamlit as st
 
 def calculate_coding_experience(df):
     """Calculate coding experience based on 'Created At' column."""
@@ -18,6 +19,7 @@ def map_input_to_domain(input_value, domain_match):
     """Map input domain to its standardized name."""
     return domain_match.get(input_value, "Unknown Domain")
 
+@st.cache_data
 def merge_and_filter(main_df, final_df, domain_filter):
     """Merge and filter DataFrames based on common columns."""
     if domain_filter:
@@ -27,6 +29,7 @@ def merge_and_filter(main_df, final_df, domain_filter):
     output_df = output_df[~output_df['Username'].duplicated()]
     return output_df
 
+@st.cache_data
 def cluster_push(user_exp, user_domain,prog_lang):
     input_csv_path = 'Datasets/github_final_dataset.csv'
     prim_model_path = 'K-means_model/kmeans_model_main.pkl'

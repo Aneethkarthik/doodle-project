@@ -67,7 +67,7 @@ def email_check(email_to_check):
     cursor = conn.cursor()
     # Query execution
     query = '''
-            SELECT Email FROM candidates_table WHERE Email = ?
+            SELECT candidate_email FROM answers_table WHERE candidate_email = ?
             '''
     cursor.execute(query, (email_to_check,))
     row = cursor.fetchone()

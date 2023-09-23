@@ -4,7 +4,7 @@ import streamlit as st
 from pathlib import Path
 from yaml.loader import SafeLoader
 import streamlit_authenticator as stauth
-from hushhushDB_V2 import insert_answers_db
+from hushhushDB_V2 import insert_answers_db, email_check
 
 credentials_file_path = Path(__file__).parent.parent/"user_credentials/candidate_login.yaml"
 
@@ -65,6 +65,9 @@ else:
                     if candidate_email == "" or candidate_name == "":
                         st.error("Candidate Email or Name left empty.")
                     else:
-                        insert_answers_db(candidate_name, candidate_email, question_one_code, question_two_code, question_three_code)
-                        st.success("Your answers have been submiited.")
+                        if not email_check(candidate_email):
+                            insert_answers_db(candidate_name, candidate_email, question_one_code, question_two_code, question_three_code)
+                            st.success("Your answers have been submitted.")
+                        else:
+                            st.warning("You have already submitted your answers", icon="⚠️")
             authenticator.logout("Logout", "main")

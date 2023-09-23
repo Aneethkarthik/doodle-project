@@ -17,7 +17,7 @@ else:
       user_config = yaml.load(file, Loader=SafeLoader)
       authenticator = stauth.Authenticate(user_config["credentials"],user_config["cookie"]["name"],user_config["cookie"]["key"],user_config["cookie"]["expiry_days"])
 
-      name, authentication_status, username = authenticator.login("Login to Recruiter Space", "main")
+      name, authentication_status, username = authenticator.login("Login to Recruiter Space 🤵🏻", "main")
 
       if authentication_status == False:
         st.error("Username or Password is incorrect!")

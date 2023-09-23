@@ -10,7 +10,7 @@ with open(credentials_file_path) as file:
     user_config = yaml.load(file, Loader=SafeLoader)
     authenticator = stauth.Authenticate(user_config["credentials"],user_config["cookie"]["name"],user_config["cookie"]["key"],user_config["cookie"]["expiry_days"])
 try:
-    if authenticator.register_user('Register Recruiter', 'main', preauthorization=False):
+    if authenticator.register_user('Register Recruiter 🗒️', 'main', preauthorization=False):
         with open(credentials_file_path, 'w') as file:
             yaml.dump(user_config, file, default_flow_style=False) 
         st.success('Recruiter registered successfully. Go to Recruiter Space to login.')

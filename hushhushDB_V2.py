@@ -57,3 +57,20 @@ def insert_answers_db(candidate_name, candidate_email, question_one_code, questi
     cursor.execute(insert_sql, values)
     conn.commit()
     conn.close()
+
+
+
+
+def email_check(email_to_check):
+    # This function checks if the passed email_id is present in the database. This Fn is then used to restrict users from doing multiple answer submissions.
+    conn = sqlite3.connect('final_names.db')
+    cursor = conn.cursor()
+    # Query execution
+    query = '''
+            SELECT Email FROM candidates_table WHERE Email = ?
+            '''
+    cursor.execute(query, (email_to_check,))
+    row = cursor.fetchone()
+    conn.close()
+    # Returns true, if the email is present
+    return row is not None

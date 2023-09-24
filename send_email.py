@@ -23,7 +23,7 @@ def send_email():
 
 
     subject = "Job Opportunity at Doodle"
-    message_body = "Dear {name},\n\nWe are excited to inform you about a job opportunity at Doodle. Please use the username and password given below to login to the Candidate Space and give an online test.\nUSERNAME: FutureDoodler\nPASSWORD: doodler@123\n\nBest regards,\nDoodle INC."
+    message_body = "Dear {name},\n\nWe are excited to inform you about a job opportunity at Doodle. Please use the username and password given below to login to the Candidate Space and give an online test.\nUSERNAME: FutureDoodler\nPASSWORD: doodler@123\n\nLink to the Candidate Space:\nhttps://doodle-project-j3wmuu4m34cfczs9etid72.streamlit.app/Candidate_Space\n\n Best regards,\nDoodle INC."
 
     # Establishing an SMTP connection
     server = smtplib.SMTP(smtp_server, smtp_port)
